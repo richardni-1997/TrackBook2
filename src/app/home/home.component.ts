@@ -29,30 +29,35 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 //Monthly Savings given a target amount and date
-  monthlyPlan(): void {
-    //console.log("month")
-    
-    this.monthPlan = true;
-    var m1=this.targetDate.getMonth();
-    console.log(m1);
-    console.log(this.targetDate.getMonth());
-    // duration = (Number(this.targetDate) - Number(this.presentDay));
-    this.duration = this.targetDate.getMonth() - this.presentDay.getMonth();
-   console.log(this.duration);
-    this.monthlySavings = this.targetSavings / (this.duration);
-    console.log(this.monthlySavings);
-  }
+monthlyPlan(): void {
 
-  biWeeklyPlan(): void {
-    console.log("week")
-    this.biweekPlan = true;
-    console.log(this.targetDate);
-    console.log(this.presentDay);
-    let duration = (((Number(this.targetDate) - Number(this.presentDay)))/7)*2;
-    console.log(duration);
-    this.biWeeklySavings = this.targetSavings/ duration;
-    console.log(this.biWeeklySavings);
-  }
+  //console.log("month")
+
+
+
+  this.monthPlan = true;
+
+  this.duration = new Date(this.targetDate).getMonth() - new Date().getMonth();
+
+  console.log(this.duration);
+
+  this.monthlySavings = this.targetSavings / (this.duration);
+
+  console.log(this.monthlySavings);
+
+}
+
+
+
+biWeeklyPlan(): void {
+
+  this.biWeeklySavings = this.monthlySavings / 2;
+
+  console.log(this.biWeeklySavings);
+
+}
+
+
 //clear values and button upon reset 
    clear(){
     this.targetDate = null;

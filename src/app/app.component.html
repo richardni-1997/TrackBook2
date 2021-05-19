@@ -1,22 +1,24 @@
-<mat-icon aria-hidden="false" aria-label="Example home icon" routerLink="">home</mat-icon>
 
- <button mat-button [matMenuTriggerFor]="aboveMenu">Goals</button>
+<div class="menu">
+ <button style="font-size: 25px; color: rgb(109, 10, 10);" mat-button [matMenuTriggerFor]="aboveMenu">Goals</button>
 <mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item routerLink="/goals/newgoal">Add Goal</button>
+  <button  mat-menu-item routerLink="/goals/newgoal">Add Goal</button>
   <button mat-menu-item routerLink="/goals">Goal List</button>
 </mat-menu>
 
-<<<<<<< HEAD
-
-=======
->>>>>>> e5c8ff90c059f0039fbda4eab50f13492f4d4e1f
-<button mat-button [matMenuTriggerFor]="beforeMenu">User</button>
+<button style="font-size: 25px; color: rgb(109, 10, 10);" mat-button [matMenuTriggerFor]="beforeMenu">User</button>
 <mat-menu #beforeMenu="matMenu" xPosition="before">
   <button mat-menu-item>Sign Up</button>
   <button mat-menu-item>Login</button>
 </mat-menu>
+<!-- <mat-icon color="warn" style ="font-size:large" aria-hidden="false" aria-label="Example home icon" routerLink="">home</mat-icon> -->
+<button style="font-size: 25px; color: rgb(109, 10, 10);" mat-button routerLink="" >Home</button>
+<img src="./assets/Spyglass.jpg">
 
-<button mat-button routerLink="/goalsChart">Progress</button>
+</div>
+
+<!-- <button mat-button routerLink="/goalsChart">Progress</button> -->
+<!-- <button mat-button routerLink="">Get Started</button> -->
 
 <!-- <button mat-button routerLink="">Home</button> -->
 

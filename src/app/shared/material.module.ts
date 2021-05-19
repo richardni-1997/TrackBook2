@@ -11,7 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
-
+//import { MatCard }from '@angular/material/card'
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
@@ -28,8 +28,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatButtonModule,
     MatIconModule,
     MatTableModule,
-    MatProgressBarModule
-  
+    MatProgressBarModule,
     
   ]
 })

@@ -1,64 +1,65 @@
-<div class="addgoal-component" style="width: 500px; margin: auto;"> 
+<div class="addgoal-component" style="width: 600px; margin: auto;"> 
 <h2>Edit Goal</h2>
 <form *ngIf="currentGoal">    
-    <!-- <label>Goal Id:</label><br>
-    <mat-form-field appearance="fill">
-      <input matInput type="number"
-      [(ngModel)]="currentGoal.goalId"
-      name="goalId">
-    </mat-form-field><br>
-
-    <label>Email:</label><br>
-    <mat-form-field appearance="fill">
-      <input matInput type="text"
-      [(ngModel)]="currentGoal.email"
-      name="email">
-    </mat-form-field><br> -->
-
+    
     <label>Start Date:</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="date"
       [(ngModel)]="currentGoal.startDate"
       name="startDate">
     </mat-form-field><br>
 
     <label>Target Date:</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="date"
       [(ngModel)]="currentGoal.targetDate"
       name="targetDate">
     </mat-form-field><br>
 
     <label>Goal Name:</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="text"
       [(ngModel)]="currentGoal.name"
       name="name">
     </mat-form-field><br>
 
+    <!-- <div class="form-group">
+      <mat-form-field >
+      <mat-label for="name">Goal Name</mat-label>
+     <mat-select name = "name" [(ngModel)]="goal.name">
+      <mat-option>None</mat-option>
+      <mat-option value="vacation">Vacation</mat-option>
+      <mat-option  value="buyinghome">Home</mat-option>
+      <mat-option value="carloan">Car </mat-option>
+      <mat-option value="debt">Wedding</mat-option>
+      <mat-option value="emergencyfund">Emergency fund</mat-option>
+      <mat-option value="collegefund">Invest for college</mat-option>
+    </mat-select>
+    </mat-form-field>
+    </div> -->
     <label>Goal Description:</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="text"
       [(ngModel)]="currentGoal.description"
       name="description">
     </mat-form-field><br> 
     
     <label>Current Savings:</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="number"
       [(ngModel)]="currentGoal.currentSavings"
       name="currentSavings">
     </mat-form-field><br>
 
     <label>Target Savings:</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="number"
       [(ngModel)]="currentGoal.targetSavings"
       name="targetSavings">
     </mat-form-field><br>
 
     <label>Priority</label><br>
-    <mat-form-field appearance="fill">
+    <mat-form-field >
       <input matInput type="text"
       [(ngModel)]="currentGoal.priority"
       name="priority">

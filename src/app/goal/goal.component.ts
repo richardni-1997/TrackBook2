@@ -39,7 +39,7 @@ export class GoalComponent implements OnInit{
               new EventEmitter<string>();
 
   goalFilter: string;
-  message: string;
+  message: string=null;
   currentGoal = null;
   expandedGoal: Goal | null;
   dataSource: MatTableDataSource<Goal>;
@@ -51,10 +51,7 @@ export class GoalComponent implements OnInit{
   displayedColumns: string[] = ['goalid', 'email', 'name', 'description', 'start', 'target', 
                                 'currentSavings', 'targetSavings', 'priority', 'select'];
   
-  onValueChange(value: string): void {
-    this.goalService.filterBy = value;
-    this.filterBy(value);
-  }
+ 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -106,12 +103,11 @@ export class GoalComponent implements OnInit{
           console.log(error);
         }
       )};
-<<<<<<< HEAD
+
       private displayCurrentProgress(current, total){
         return Number(current / total) * 100 ;
       }
 
-=======
       
   filterBy(filter?: string): void {
     if (filter){
@@ -121,5 +117,4 @@ export class GoalComponent implements OnInit{
       this.filteredGoals = this.goals;
     }
   }
->>>>>>> e5c8ff90c059f0039fbda4eab50f13492f4d4e1f
 }

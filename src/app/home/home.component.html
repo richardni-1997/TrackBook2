@@ -1,108 +1,31 @@
-<<<<<<< HEAD
-<div class="addgoal-component" style="width: 500px; margin: auto;"> 
-<h3>Welcome to TrackBook a division of SpyGlass!<br> <br></h3>
-  <h4>Let's get started!</h4> 
-=======
-<<<<<<< HEAD
-<br>
-<div>
-  <img mat-card-image src="../assets/moneyplant.jpg" alt="Photo of a money tree"
-  class="float-left">
-  <h1>Welcome</h1> to TrackBook, a division of SpyGlass!
+<br><br><br><br>
+<div class="image">
+  <img src="../assets/moneyplant.jpg">
 </div>
-=======
-<<<<<<< HEAD
-<!-- <button mat-button [matMenuTriggerFor]="aboveMenu">Goals</button>
-<mat-menu #aboveMenu="matMenu" yPosition="above">
-  <button mat-menu-item routerLink="/goals/newgoal">Add Goal</button>
-  <button mat-menu-item>Goal List</button>
-</mat-menu>
-=======
-<table mat-table
-       [dataSource]="dataSource" multiTemplateDataRows
-       class="mat-elevation-z8">
-  <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
-    <th mat-header-cell *matHeaderCellDef> {{column}} </th>
-    <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
-  </ng-container>
->>>>>>> 40f9c88796efd95c1d6cac9628a7f29d088e37eb
->>>>>>> e5c8ff90c059f0039fbda4eab50f13492f4d4e1f
 
-        <mat-form-field>
-          <mat-label>Target Savings </mat-label>
-          <input matInput placeholder="$0.00" [(ngModel)]="targetSavings" required>
-        </mat-form-field>
-  
-    
-        <mat-form-field >
-        <mat-label for="targetDate">Target Date</mat-label>
-        <input matInput 
-          type="date"
-          class="form-control"
-          id="targetDate"
-          required
-          [(ngModel)]="targetDate"
-          name="targetDate"
-        />
-        </mat-form-field>
-      
-        <!-- <div>
-          <button mat-button >Home</button>
-          <button mat-button >Next</button>
-        </div> -->
-    
+<div class="addgoal-component" style="width: 500px; margin: auto;">
+  <h1 style="color: rgb(109, 10, 10);">Let's get started!</h1>
 
-<<<<<<< HEAD
-   
-      <h5>Savings Plan</h5>
-      <!-- <div class="button-container" *ngIf="!monthPlan"> -->
-        <button  mat-raised-button color="accent" (click)="monthlyPlan()">Suggested Monthly Savings</button><br><br>
-        <!-- <button  mat-raised-button color="accent" (click)="calDate(targetDate,)">Suggested Monthly Savings</button><br><br> -->
-        <!-- <button  mat-raised-button color="primary" (click)="biWeeklyPlan()">Bi Weekly Savings Plan</button><br><br> -->
-        <div class="savings-plan-container" *ngIf="monthPlan">
-          <p>Suggested Monthly Savings:</p>
-          <P>
-              Monthly Savings: {{monthlySavings | currency:'USD'}}
-          </P>
-         </div>
-        
-      
-      <!-- <div class="savings-plan-container" *ngIf="biweekPlan">
-        
-        <p>Suggested Bi Weekly Savings Plan:</p>
-        <P>
-            BiWeekly Savings: {{biWeeklySavings | currency:'USD'}}
-        </P>
-       </div> -->
-      
-    
-  
- 
-    <div>
-      <button mat-raised-button color="primary" routerLink="/goals/newGoal">Set your Goals</button>
-  </div>
-  </div>
-  
- 
-=======
-<<<<<<< HEAD
-<button mat-button [matMenuTriggerFor]="beforeMenu">User</button>
-<mat-menu #beforeMenu="matMenu" xPosition="before">
-  <button mat-menu-item>Sign Up</button>
-  <button mat-menu-item>Login</button>
-</mat-menu>
+  <br>
+  <mat-form-field>
+    <mat-label style="font-size: 20px; color: black;">Target Savings </mat-label>
+    <input matInput placeholder="$0.00" [(ngModel)]="targetSavings" required>
+  </mat-form-field>
 
 
-<button mat-button routerLink="">Home</button> -->
-=======
-  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-  <tr mat-row *matRowDef="let element; columns: columnsToDisplay;"
-      class="example-element-row"
-      [class.example-expanded-row]="expandedElement === element"
-      (click)="expandedElement = expandedElement === element ? null : element">
-  </tr>
-  <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
-</table>
->>>>>>> 40f9c88796efd95c1d6cac9628a7f29d088e37eb
->>>>>>> db92058f54b6d05ec40228847d57b4762a0891ff
->>>>>>> e5c8ff90c059f0039fbda4eab50f13492f4d4e1f
+  <mat-form-field>
+    <mat-label for="targetDate" style="font-size: 20px; color: black;">Target Date</mat-label>
+    <input matInput type="date" class="form-control" id="targetDate" required [(ngModel)]="targetDate"
+      name="targetDate" />
+  </mat-form-field>
+
+
+  <br><br>
+
+  <button style="color: white; font-size: 20px;" mat-raised-button color="warn" (click)="monthlyPlan()">Suggested Savings Plan</button><br><br>
+  <div class="savings-plan-container" *ngIf="monthPlan">
+    <P style = "color: purple; font-weight: bold; font-size: 20px;">
+      Monthly Savings: {{monthlySavings | currency:'USD'}}<br><br>
+      Bi Weekly Savings: {{monthlySavings/2 | currency:'USD'}}
+    </P>
+</div>

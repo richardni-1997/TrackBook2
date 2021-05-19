@@ -14,7 +14,8 @@ export class EditGoalComponent implements OnInit {
   currentGoal: any;
   message = '';
   submitted = false;
-
+  valid: boolean = false;
+ 
   constructor(
     private goalService: GoalService,
     private route: ActivatedRoute,
@@ -43,9 +44,10 @@ export class EditGoalComponent implements OnInit {
     };
 
 
-    //currentGoal is currently not changing, it is not getting user input changes, causes the update button to
-    //do nothing to the data entry. not knowing where to push my changes to a specific id.
+    //updates the goal.
     updateGoal(): void {
+      this.validationErrors();
+      if (this.valid==true){
       this.goalService.update(this.currentGoal.goalId, this.currentGoal)
         .subscribe(
           response => {
@@ -56,6 +58,22 @@ export class EditGoalComponent implements OnInit {
             console.log(error);
           }
         )
+      }
     };
+    validationErrors(): void{
+      //this.valid=false;
 
+      if (this.currentGoal.startDate>this.currentGoal.targetDate){
+      this.valid = false;
+      alert("start date is before targetdate");
+      }
+     // if (this.currentGoal.starDate<new Date())
+       if (this.currentGoal.currentSavings >= this.currentGoal.targetSavings){
+        //this.currentGoal.currentSavings='';
+        this.valid = false;
+        alert("current savings cannot be more than target savings"); 
+      }
+      this.valid = true;
+        
+    }
   }

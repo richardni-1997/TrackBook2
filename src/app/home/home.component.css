@@ -1,0 +1,11 @@
+h1 {
+    color: rgb(238, 240, 151);
+}
+.image {
+    float: left;
+    size: 50%;
+}
+.addgoal-component {
+    float: right;
+    padding-right: 100px;
+}

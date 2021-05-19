@@ -11,14 +11,31 @@ export class GoalchartComponent implements OnInit {
 
   goals: Goal[] = [];
   private subscription;
-  goalsArray=[];
+  goalsArray=[{
+    "name": "Vacation",
+    "value": 5000
+  },{
+    "name": "Home",
+    "value": 40000
+
+  },{
+    "name": "car",
+    "value": 10000
+
+  },{
+    "name": "Debt",
+    "value": 5000
+  },{
+    "name": "Emergency Fund",
+    "value": 6000
+  }];
   goalschart = 
     {
-      name: "",
-      value: 0
+      "name": "Vacation",
+      value: 600
     }
   
-    goalsArray1=[{ name: 1, value: 0 }, { name: 2, value: 0 }, { name: 3, value: 0 }];
+    
 
   constructor(private goalschartService: GoalschartService) { }
 
@@ -32,12 +49,12 @@ export class GoalchartComponent implements OnInit {
   getGoalsChartData() {
 
     this.goals.forEach((goal) => {
-
-      this.goalschart.name =goal.name;
+      for (let i =0; i< this.goalsArray.length; i++){
+      this.goalschart[i].name =goal.name;
       console.log(this.goalschart.name);
-      this.goalschart.value=goal.currentSavings;
-      this.goalsArray.push(this.goalschart);
-
+      this.goalschart[i].value=goal.currentSavings;
+      this.goalsArray.push(this.goalschart[i]);
+      }
     })
   }
 }

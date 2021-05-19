@@ -23,21 +23,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GoalchartComponent } from './goalchart/goalchart.component';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-<<<<<<< HEAD
-//import { MatTableModule } from '@angular/material/table';
-//import { HttpClientModule } from '@angular/common/http';
-=======
-=======
+
 import { MatTableModule } from '@angular/material/table';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { HttpClientModule } from '@angular/common/http';
-<<<<<<< HEAD
-import { FormsModule } from '@angular/forms';
 
-=======
->>>>>>> 40f9c88796efd95c1d6cac9628a7f29d088e37eb
->>>>>>> db92058f54b6d05ec40228847d57b4762a0891ff
->>>>>>> e5c8ff90c059f0039fbda4eab50f13492f4d4e1f
+
 
 @NgModule({
   declarations: [
@@ -65,25 +55,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     NgxChartsModule
-<<<<<<< HEAD
-    
-    
-    
-   
-=======
-=======
-    MatMenuModule,
-    MatButtonModule,
-    MatTableModule,
-<<<<<<< HEAD
-    HttpClientModule,
-    FormsModule,
-    MatFormFieldModule
-=======
-    HttpClientModule
->>>>>>> 40f9c88796efd95c1d6cac9628a7f29d088e37eb
->>>>>>> db92058f54b6d05ec40228847d57b4762a0891ff
->>>>>>> e5c8ff90c059f0039fbda4eab50f13492f4d4e1f
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 
 import { Component, OnInit } from '@angular/core';
-import { EmailValidator, FormControl, Validators } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { GoalService } from 'src/app/services/goal.service';
 
@@ -10,31 +10,34 @@ import { GoalService } from 'src/app/services/goal.service';
   styleUrls: ['./addgoal.component.css']
 })
 export class AddgoalComponent implements OnInit {
-
+  goalForm: FormGroup;
   private subscription;
   //for checking if an goal has been submitted
   submitted = false;
+  valid: boolean = true;
   goal = {
-    email:null,
-    name:null,
-    description:null,
+    email: null,
+    name: null,
+    description: null,
     startDate: null,
     targetDate: null,
     targetSavings: null,
     currentSavings: null,
-    priority:null
+    priority: null
   }
- error: boolean=false;
-  
  
-  constructor(private goalService: GoalService) { }
+ 
+  constructor(private goalService: GoalService)
+     { }
 
   ngOnInit(): void {}
-
- 
+    
+   
+    
 //Add new goal
   saveGoal(): void {
-     
+  // this.validationErrors();
+  
      const data = {
       email: this.goal.email,
       name: this.goal.name,
@@ -44,21 +47,22 @@ export class AddgoalComponent implements OnInit {
       currentSavings: this.goal.currentSavings,
       targetSavings: this.goal.targetSavings,
       priority: this.goal.priority
-
+     
       
     };
-  
+    if (this.valid==true){
+      console.log("create");
     this.goalService.createGoal(data)
       .subscribe(response => {
         
         console.log(response); 
          this.submitted = true;
        }); 
-       error => {
-         console.log("Invalid Data");
-       };
-        
- 
+      //  error => {
+      //    console.log("Invalid Data");
+      //  };
+  
+      } 
 }
 
   newGoal(): void {
@@ -73,91 +77,36 @@ export class AddgoalComponent implements OnInit {
       targetSavings: null,
       priority:''
     };
+    
   }
-// email = new FormControl('', [Validators.required, Validators.email]);
- // email = new FormControl('', [Validators.required, Validators.pattern(/^[a-zA-Z0–9_.+-]+@[a-zA-Z0–9-]+.[a-zA-Z0–9-.]);
-  // name = new FormControl('',[Validators.required]);
-  // description= new FormControl('',[Validators.required]);
-  // startDate= new FormControl('',[Validators.required]);
-  // targetDate = new FormControl('',[Validators.required]);
-  // currentSavings = new FormControl('',[Validators.required]);
-  // targetSavings = new FormControl('',[Validators.required]);
-  // priority=new FormControl('',[Validators.required]);
-  // getErrorMessage(){
-  //   this.error=true;
-  //   return ' Invalid Data';
-  // }
-  // getErrorEmail() {
-  //     this.error=true;
-  //     if (this.email.hasError('required')) {
-        
-  //       return 'Email is required';
-  //     }
-      
-  //   return this.email.hasError('email')  ? 'Not a valid email' : '';
+  validationErrors(): void{
+    //console.log(today);
+    this.valid=true;
+    if ((this.goal.startDate>this.goal.targetDate)){
+    this.goal.targetDate='';
     
-  // }
-  // getErrorName() {
-  //   this.error=true;
+    alert("start date is before targetdate, please choose future target date");
+    this.valid=false;
+    }
+    // if (this.goal.startDate<today){
+    //   this.goal.targetDate='';
     
-  //   if (this.name.hasError('required')) {
-  
-  //     return 'Name is required';
-  //   }
-  // }
-
-  // getErrorDesc(){
-  //   this.error=true;
+    // alert("start date is before today's date, please choose a different date");
+    // this.valid=false;
+    // }
+     if (this.goal.currentSavings >= this.goal.targetSavings){
+     this.goal.targetSavings= '';
+     this.valid = false;
+     alert("current savings cannot be more than target savings"); 
+     
+    }
     
-  //   if (this.description.hasError('required') ){
-      
-  //     return 'Description is required';
-  // }
-  // return this.description.hasError('description')  ? 'Not a valid description' : '';
-  // }
+    if (this.valid==true)
+    this.saveGoal();
+    
 
-  // getErrorStartDate(){
-  //   this.error=true;
-  //   if (this.startDate.hasError('required') ){
+    
+    
       
-  //     return 'startDate is required';
-  // }
-  // return this.startDate.hasError('startDate')  ? 'Not a valid start date' : '';
-  // }
-
-  // getErrortargettDate(){
-  //   this.error=true;
-  //   if (this.targetDate.hasError('required') ){
-      
-  //     return 'targetDate is required';
-  // }
-  // if (this.goal.startDate > this.goal.targetDate)
-  // return this.targetDate.hasError('targetDate')  ? 'Not a valid target date, must be after than start date' : '';
-  // }
-
-  // getErrorCurrentSavings(){
-  //   this.error=true;
-  //   if (this.currentSavings.hasError('required') ){
-  //          return 'Current Savings is required';
-  // }
-  // }
-  // getErrorTargetSavings(){
-  //   this.error=true;
-  //   if (this.targetSavings.hasError('required') ){
-      
-  //     return 'Target Savings is required';
-  // }
-  // if (this.goal.targetSavings>=this.goal.currentSavings){
-  //   return this.targetSavings.hasError('targetDate')  ? 'Target savings amount must be less than current savings' : '';
-  // }
-
-  // }
-  // gerErrorPriority(){
-  //   this.error=true;
-  //   if (this.priority.hasError('required') ){
-      
-  //     return 'Priority is required';
-  // }
-  // return this.priority.hasError('targetDate')  ? 'Not a valid priority' : '';
-  // }
+  }
 }
