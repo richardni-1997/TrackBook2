@@ -104,9 +104,9 @@ export class GoalComponent implements OnInit{
         }
       )};
 
-      private displayCurrentProgress(current, total){
+  private displayCurrentProgress(current, total){
         return Number(current / total) * 100 ;
-      }
+  }
 
       
   filterBy(filter?: string): void {

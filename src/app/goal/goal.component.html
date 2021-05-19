@@ -89,45 +89,31 @@
   <tr mat-row *matRowDef="let row; columns: ['expandedGoal']" class="example-detail-row"></tr>
 
 </table>
+</div>
 
-<table id = "goals" width=100% *ngIf="currentGoal && !message">
-<tr></tr>
-<th *ngFor="let column of displayedColumns">{{column}}</th>
-<tr>
-  <td>{{currentGoal.goalId}}</td>
-  <td>{{currentGoal.email}}</td>
-  <td>{{currentGoal.name}}</td>
-  <td>{{currentGoal.description}}</td>
-  <td>{{currentGoal.startDate | date}}</td>
-  <td>{{currentGoal.targetDate | date}}</td>
-  <td>{{currentGoal.currentSavings}}</td>
-  <td>{{currentGoal.targetSavings}}</td>
-  <td>{{currentGoal.priority}}</td>
-  <td><button routerLink="/goals/{{currentGoal.goalId}}">Edit</button>
-  <button (click)="deleteGoal()">Delete</button></td>
-</tr>
-
-
-<div style="width: 100px; margin: auto;" >
-  <br><br><br><br><br><br>
-             
+<mat-card class="example-card" *ngIf="currentGoal">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>{{currentGoal.name | uppercase}}</mat-card-title>
+    
+  </mat-card-header>
+  <img mat-card-image src="./assets/Home.jpg">
   <mat-card-content>
-    <mat-progress-bar mode="determinate" value="{{displayCurrentProgress(currentGoal.currentSavings, currentGoal.targetSavings)}}"></mat-progress-bar>
-    <br><br>
-                <span style="float: center;">Saved: {{currentGoal.currentSavings | currency:'USD'}} </span>
-                <span style="float: center;">Target: {{currentGoal.targetSavings | currency:'USD'}}</span>
-                <br>
-</mat-card-content>
-</div>
-
-
-<div *ngIf = message>{{message}}
-  <h4>Goal  successfully deleted!</h4>
-  <!-- <button mat-button class="btn btn-success" (click)="newGoal()" style="margin-right: 15px;">Add</button> -->
-  <!-- <button mat-button class="btn btn-success" routerLink="/goals" style="background-color: grey; margin-right: 15px;">Goal Home</button>
-  <button mat-button class="btn btn-successs" (click)= "newGoal()" style="background-color:rgb(57, 57, 145)"> -->
-    <!-- Add New Goal
-  </button> -->
-</div>
-</table>
-</div>
+    <p>
+      GoalId:{{currentGoal.goalId}}<br>
+      Email:{{currentGoal.email}}<br>
+      Name:{{currentGoal.name}}<br>
+      Description:{{currentGoal.description}}<br>
+      startDate:{{currentGoal.startDate | date}}<br>
+      targetDate:{{currentGoal.targetDate | date}}<br>
+      currentSavings:{{currentGoal.currentSavings}}<br>
+      targetSavings:{{currentGoal.targetSavings}}<br>
+      Priority:{{currentGoal.priority}}<br><br>
+      <mat-progress-bar mode="determinate" value="{{displayCurrentProgress(currentGoal.currentSavings, currentGoal.targetSavings)}}"></mat-progress-bar>
+      <br><br>
+                  <span style="float: center;">Saved: {{currentGoal.currentSavings | currency:'USD'}} </span>
+                  <span style="float: center;">Target: {{currentGoal.targetSavings | currency:'USD'}}</span><br>
+                  <span style="float: center;">Progress: {{(currentGoal.currentSavings/currentGoal.targetSavings) * 100}}%</span>
+    </p>
+  </mat-card-content>
+  </mat-card>

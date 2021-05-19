@@ -88,13 +88,13 @@ export class AddgoalComponent implements OnInit {
     alert("start date is before targetdate, please choose future target date");
     this.valid=false;
     }
-    // if (this.goal.startDate<today){
-    //   this.goal.targetDate='';
-    
+    // if ( ( new Date(this.goal.startDate).getDay) < new Date().getDay){
+    //    this.goal.targetDate='';
+    //    this.valid=false;
     // alert("start date is before today's date, please choose a different date");
-    // this.valid=false;
+    
     // }
-     if (this.goal.currentSavings >= this.goal.targetSavings){
+     if (Number(this.goal.currentSavings) >= Number(this.goal.targetSavings)){
      this.goal.targetSavings= '';
      this.valid = false;
      alert("current savings cannot be more than target savings"); 
