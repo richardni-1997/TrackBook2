@@ -1,1 +1,69 @@
+<div class="signup" style="width: 400px; margin: auto;"> 
+    <!-- <div style="width: 400px; margin: auto;"> -->
+    <div class="submit-form">
+      <div *ngIf="!submitted">
 
+        <div class="form-group">
+          <h4 >New User Signup</h4>
+            <br>
+            <mat-form-field >
+              <mat-label for="email">Email</mat-label>
+              <input matInput placeholder="pat@example.com"
+           
+              [form-control]="email"
+              required
+              [(ngModel)]="user.email"
+              name="email" 
+            />
+            <mat-error *ngIf="email.invalid">{{getErrorEmail()}}</mat-error>
+          </mat-form-field>
+       </div>
+     
+        <div class="form-group">
+          <mat-form-field>
+            <mat-label for="password">Password</mat-label>
+            <input type="password" 
+            matInput
+            class="form-control"
+            id="password"
+            #password="ngModel"
+            
+            [form-control]="password"
+              required
+            [(ngModel)]="user.password"
+            name="password"
+          />
+        </mat-form-field>
+    </div>
+
+    <div class="form-group">
+        <mat-form-field>
+          <mat-label for="confirmPassword">Confirm Password</mat-label>
+          <input type="password" 
+          matInput
+          class="form-control"
+          id="confirmPassword"
+          #password="ngModel"
+          
+          [form-control]="confirmPassword"
+              required
+          [(ngModel)]="user.confirmPassword"
+          name="confirmPassword"
+        />
+      </mat-form-field>
+  </div>
+        
+        <button (click)="saveUser()" class="btn btn-info" style="margin-right:15px;">Submit</button>
+        <button routerLink="" class="btn btn-info" style="margin-right:15px;">Home</button>
+      </div>
+  
+      <div *ngIf="submitted">
+        <h4>User successfully registered!</h4>
+        <!-- <button mat-button class="btn btn-success" (click)="newGoal()" style="margin-right: 15px;">Add</button> -->
+        <button mat-button class="btn btn-success" routerLink="/login" style="background-color: grey; margin-right: 15px;">Login</button>
+        <button mat-button class="btn btn-success" routerLink="signup" style="background-color:rgb(57, 57, 145)">
+          Add New User
+        </button>
+      </div>
+    </div>
+  </div>

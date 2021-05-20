@@ -1,3 +1,4 @@
+import { NodeWithI18n } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { GoalService } from '../services/goal.service';
 
@@ -18,8 +19,8 @@ export class HomeComponent implements OnInit {
   presentDay = new Date();
   
   duration: number;
-  
-  
+  yduration:number;
+  mduration:number;
 
   
 
@@ -36,12 +37,16 @@ monthlyPlan(): void {
 
 
   this.monthPlan = true;
+  this.yduration = (new Date(this.targetDate).getFullYear() - new Date().getFullYear())*12;
+ 
 
   this.duration = new Date(this.targetDate).getMonth() - new Date().getMonth();
+  this.mduration = this.yduration - this.duration;
+  console.log(this.mduration);
 
   console.log(this.duration);
 
-  this.monthlySavings = this.targetSavings / (this.duration);
+  this.monthlySavings = this.targetSavings / (this.mduration);
 
   console.log(this.monthlySavings);
 

@@ -53,6 +53,7 @@ export class EditGoalComponent implements OnInit {
           response => {
             console.log(response);
             this.message = 'The goal has been updated!';
+            alert(this.message);
           },
           error => {
             console.log(error);

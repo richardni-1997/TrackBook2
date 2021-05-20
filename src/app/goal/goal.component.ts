@@ -23,23 +23,23 @@ export interface Goal {
   styleUrls: ['./goal.component.css'],
   animations: [
     trigger('detailExpand', [
-      state('collapsed', style({height: '0px', minHeight: '0'})),
-      state('expanded', style({height: '*'})),
+      state('collapsed', style({ height: '0px', minHeight: '0' })),
+      state('expanded', style({ height: '*' })),
       transition('expanded <=> collapsed', animate('225ms cubic-bezier(0.4, 0.0, 0.2, 1)')),
     ]),
   ],
 })
 
-export class GoalComponent implements OnInit{
+export class GoalComponent implements OnInit {
 
   constructor(
     private goalService: GoalService) { }
 
-  @Output() valueChange: EventEmitter<string> = 
-              new EventEmitter<string>();
+  @Output() valueChange: EventEmitter<string> =
+    new EventEmitter<string>();
 
   goalFilter: string;
-  message: string=null;
+  message: string = null;
   currentGoal = null;
   expandedGoal: Goal | null;
   dataSource: MatTableDataSource<Goal>;
@@ -48,10 +48,10 @@ export class GoalComponent implements OnInit{
   selectedGoal: MatTableDataSource<Goal>;
 
   goals: any;
-  displayedColumns: string[] = ['goalid', 'email', 'name', 'description', 'start', 'target', 
-                                'currentSavings', 'targetSavings', 'priority', 'select'];
-  
- 
+  displayedColumns: string[] = ['goalid', 'email', 'name', 'description', 'start', 'target',
+    'currentSavings', 'targetSavings', 'priority', 'select'];
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -87,9 +87,9 @@ export class GoalComponent implements OnInit{
         console.log(this.currentGoal);
         console.log(this.selectedGoal);
       },
-      error => {
-        console.log(error);
-      })
+        error => {
+          console.log(error);
+        })
   }
 
   deleteGoal(): void {
@@ -98,21 +98,25 @@ export class GoalComponent implements OnInit{
         response => {
           console.log(response);
           this.message = "The goal has been deleted";
+          alert(this.message);
         },
         error => {
           console.log(error);
         }
-      )};
-
-  private displayCurrentProgress(current, total){
-        return Number(current / total) * 100 ;
+      );
+    this.currentGoal = null;
+    this.resetList();
   }
 
-      
+  private displayCurrentProgress(current, total) {
+    return Number(current / total) * 100;
+  }
+
+
   filterBy(filter?: string): void {
-    if (filter){
+    if (filter) {
       this.filteredGoals = this.goals.filter((goal: Goal) =>
-           goal.email.toLocaleLowerCase().indexOf(filter.toLocaleLowerCase()) !== -1);
+        goal.email.toLocaleLowerCase().indexOf(filter.toLocaleLowerCase()) !== -1);
     } else {
       this.filteredGoals = this.goals;
     }

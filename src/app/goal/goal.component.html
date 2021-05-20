@@ -1,119 +1,132 @@
-<div class="addgoal-component" style="width: 1000px; margin: auto;"> 
+<div class="addgoal-component" style="width: 1000px; margin: auto;">
 
-<br><mat-form-field>
-  <label style>Filter By:</label>
-  <mat-label>Filter</mat-label>
-  <input matInput (keyup)="applyFilter($event)" placeholder="someone@example.com" #input>
-</mat-form-field>
-<button mat-raised-button color="warn" (click)="resetList()">Return To List</button>
+  <br>
+  <mat-form-field>
+    <label style>Filter By:</label>
+    <mat-label>Filter</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="someone@example.com" #input>
+  </mat-form-field>
+  <button mat-raised-button color="warn" (click)="resetList()">Return To List</button>
 
-<table id = "goals" mat-table [dataSource]="dataSource" *ngIf="!currentGoal" multiTemplateDataRows class="mat-elevation-z8">
- 
+  <table id="goals" mat-table [dataSource]="dataSource" *ngIf="!currentGoal" multiTemplateDataRows
+    class="mat-elevation-z8">
 
-  <ng-container matColumnDef="expandedGoal">
-    <td mat-cell *matCellDef="let goal" [attr.colspan]="displayedColumns.length">
-      <div class="example-element-detail" [@detailExpand]="goal == expandedGoal ? 'expanded' : 'collapsed'">
-       
-        <div>
-          <div> {{goal.description}} </div>
-          <div> {{goal.startDate}} </div>
-          <div> {{goal.targetDate}} </div>
-          <div> {{goal.currentSavings}} </div>
-          <div> {{goal.targetSavings}} </div>
 
+    <ng-container matColumnDef="expandedGoal">
+      <td mat-cell *matCellDef="let goal" [attr.colspan]="displayedColumns.length">
+        <div class="example-element-detail" [@detailExpand]="goal == expandedGoal ? 'expanded' : 'collapsed'">
+
+          <div>
+            <div> {{goal.description}} </div>
+            <div> {{goal.startDate}} </div>
+            <div> {{goal.targetDate}} </div>
+            <div> {{goal.currentSavings}} </div>
+            <div> {{goal.targetSavings}} </div>
+
+          </div>
+          <div class="example-element-description">
+            {{goal.description}}
+            <span class="example-element-description-attribution"> -- Wikipedia </span>
+          </div>
         </div>
-        <div class="example-element-description">
-          {{goal.description}}
-          <span class="example-element-description-attribution"> -- Wikipedia </span>
-        </div>
-      </div>
-    </td>
-  </ng-container>
-  <!-- <tr *ngFor="let goals of currentGoal | paginate: { itemsPerPage: 8, currentPage: p}"> -->
-  <ng-container matColumnDef="goalid">
-    <th mat-header-cell *matHeaderCellDef> GoalID </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.goalId}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="email">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.email}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Goal Name </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.name}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="description">
-    <th mat-header-cell *matHeaderCellDef> Description </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.description}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="start">
-    <th mat-header-cell *matHeaderCellDef> Start </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.startDate | date}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="target">
-    <th mat-header-cell *matHeaderCellDef> Target </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.targetDate | date}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="currentSavings">
-    <th mat-header-cell *matHeaderCellDef> Current Savings </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.currentSavings}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="targetSavings">
-    <th mat-header-cell *matHeaderCellDef> Target Savings </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.targetSavings}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="priority">
-    <th mat-header-cell *matHeaderCellDef> Priority </th>
-    <td mat-cell *matCellDef="let goal"> {{goal.priority}} </td>
-  </ng-container>
-
-  <ng-container matColumnDef="select">
-    <th mat-header-cell *matHeaderCellDef> Action </th>
-    <td mat-cell *matCellDef="let goal"><button (click)="setActiveGoal(goal.goalId)">Select</button></td>
-  </ng-container>
+      </td>
+    </ng-container>
+    <!-- <tr *ngFor="let goals of currentGoal | paginate: { itemsPerPage: 8, currentPage: p}"> -->
 
 
-  <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.example-expanded-row]="expandedGoal === goal"
-    (click)="expandedGoal = expandedGoal === goal ? null : goal"></tr>
+    <ng-container matColumnDef="goalid">
+      <th mat-header-cell *matHeaderCellDef> GoalID </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.goalId}} </td>
+    </ng-container>
 
-  <tr mat-row *matRowDef="let row; columns: ['expandedGoal']" class="example-detail-row"></tr>
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> Email </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.email}} </td>
+    </ng-container>
 
-</table>
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef> Goal Name </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.name}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="description">
+      <th mat-header-cell *matHeaderCellDef> Description </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="start">
+      <th mat-header-cell *matHeaderCellDef> Start </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.startDate | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="target">
+      <th mat-header-cell *matHeaderCellDef> Target </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.targetDate | date}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="currentSavings">
+      <th mat-header-cell *matHeaderCellDef> Current Savings </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.currentSavings}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="targetSavings">
+      <th mat-header-cell *matHeaderCellDef> Target Savings </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.targetSavings}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="priority">
+      <th mat-header-cell *matHeaderCellDef> Priority </th>
+      <td mat-cell *matCellDef="let goal"> {{goal.priority}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="select">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let goal"><button (click)="setActiveGoal(goal.goalId)">Select</button></td>
+    </ng-container>
+
+
+    <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;" [class.example-expanded-row]="expandedGoal === goal"
+      (click)="expandedGoal = expandedGoal === goal ? null : goal"></tr>
+
+    <tr mat-row *matRowDef="let row; columns: ['expandedGoal']" class="example-detail-row"></tr>
+
+  </table>
 </div>
 
-<mat-card class="example-card" *ngIf="currentGoal">
+<mat-card class="example-card" *ngIf="currentGoal && !message">
   <mat-card-header>
     <div mat-card-avatar class="example-header-image"></div>
     <mat-card-title>{{currentGoal.name | uppercase}}</mat-card-title>
-    
+
   </mat-card-header>
   <img mat-card-image src="./assets/Home.jpg">
   <mat-card-content>
-    <p>
-      GoalId:{{currentGoal.goalId}}<br>
-      Email:{{currentGoal.email}}<br>
-      Name:{{currentGoal.name}}<br>
-      Description:{{currentGoal.description}}<br>
-      startDate:{{currentGoal.startDate | date}}<br>
-      targetDate:{{currentGoal.targetDate | date}}<br>
-      currentSavings:{{currentGoal.currentSavings}}<br>
-      targetSavings:{{currentGoal.targetSavings}}<br>
-      Priority:{{currentGoal.priority}}<br><br>
-      <mat-progress-bar mode="determinate" value="{{displayCurrentProgress(currentGoal.currentSavings, currentGoal.targetSavings)}}"></mat-progress-bar>
+    <p style="font-size:15px;font-weight: bold;">
+      GoalId: {{currentGoal.goalId}} <br>
+      Email: {{currentGoal.email}}<br>
+      Goal Name: {{currentGoal.name}}<br>
+      Description: {{currentGoal.description}}<br>
+      startDate: {{currentGoal.startDate | date}}<br>
+      targetDate: {{currentGoal.targetDate | date}}<br>
+      currentSavings: {{currentGoal.currentSavings}}<br>
+      targetSavings: {{currentGoal.targetSavings}}<br>
+      Priority: {{currentGoal.priority}}<br><br>
+      <mat-progress-bar mode="determinate"
+        value="{{displayCurrentProgress(currentGoal.currentSavings, currentGoal.targetSavings)}}"></mat-progress-bar>
       <br><br>
-                  <span style="float: center;">Saved: {{currentGoal.currentSavings | currency:'USD'}} </span>
-                  <span style="float: center;">Target: {{currentGoal.targetSavings | currency:'USD'}}</span><br>
-                  <span style="float: center;">Progress: {{(currentGoal.currentSavings/currentGoal.targetSavings) * 100}}%</span>
+      <span style="float: center;">Saved: {{currentGoal.currentSavings | currency:'USD'}} </span>
+      <span style="float: center;">Target: {{currentGoal.targetSavings | currency:'USD'}}</span><br>
+      <span style="float: center;">Progress: {{((currentGoal.currentSavings/currentGoal.targetSavings) * 100) | number: '2.1-2'}}%</span>
     </p>
   </mat-card-content>
-  </mat-card>
+  <button (click)="retrieveGoals()" mat-raised-button color="primary"
+    routerLink="/goals/{{currentGoal.goalId}}">Edit</button>
+  <button (click)="deleteGoal()" mat-raised-button color="warn">Delete</button>
+
+</mat-card>
+
+<!-- <div *ngIf="message">
+  {{message}}
+</div> -->

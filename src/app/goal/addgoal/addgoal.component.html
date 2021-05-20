@@ -24,11 +24,12 @@
            <mat-select name = "name" [(ngModel)]="goal.name">
             <mat-option>None</mat-option>
             <mat-option value="vacation">Vacation</mat-option>
-            <mat-option  value="buyinghome">Home</mat-option>
-            <mat-option value="carloan">Car </mat-option>
-            <mat-option value="debt">Wedding</mat-option>
-            <mat-option value="emergencyfund">Emergency fund</mat-option>
-            <mat-option value="collegefund">Invest for college</mat-option>
+            <mat-option  value="Home">Home</mat-option>
+            <mat-option value="Car">Car </mat-option>
+            <mat-option value="Debt">Wedding</mat-option>
+            <mat-option value="Emergencyfund">Emergency fund</mat-option>
+            <mat-option value="Collegefund">Invest for college</mat-option>
+            <mat-option value="">Other</mat-option>
           </mat-select>
          
         </mat-form-field>
@@ -82,6 +83,7 @@
             <mat-form-field >
               <mat-label for="currentSavings">Current Savings</mat-label>
               <input matInput
+              placeholder="$0.00"
               type="text"
               class="form-control"
               id="currentSavings"
@@ -89,7 +91,7 @@
               [(ngModel)]="goal.currentSavings"
               name="currentSavings"
             />
-            <span mat-Prefix>$&nbsp;</span>
+           
            </mat-form-field>
           </div>
 
@@ -98,6 +100,7 @@
             <mat-form-field >
               <mat-label for="targetSavings">Target Savings</mat-label>
               <input matInput
+              placeholder="$0.00"
               type="text"
               class="form-control"
               id="targetSavings"
@@ -105,7 +108,7 @@
               [(ngModel)]="goal.targetSavings"
               name="targetSavings"
             />
-            <span mat-Prefix>$&nbsp;</span>
+            
             </mat-form-field>
            <!-- <div (click)="validationErrors()" ></div> -->
           </div>
@@ -128,7 +131,7 @@
         <!-- <div *ngIf ="!email || !currentSavings || !targetSavings !! !targetDate !startDate"> -->
         <button (click)="validationErrors()" type="submit" [disabled]="!goalForm.form.valid"
         class="btn btn-info" style="margin-right:15px;">Submit</button>
-       <button routerLink="/goals" class="btn btn-info" style="background-color: rgb(139, 141, 18);">Home</button>
+       <button routerLink="/goals" class="btn btn-info" style="background-color: rgb(139, 141, 18);">Goals</button>
       <!-- </div> -->
     
     
@@ -138,7 +141,7 @@
       <div *ngIf="submitted">
         <h4>Goal  successfully added!</h4>
         <!-- <button mat-button class="btn btn-success" (click)="newGoal()" style="margin-right: 15px;">Add</button> -->
-        <button mat-button class="btn btn-success" routerLink="/goals" style="background-color: grey; margin-right: 15px;">Goal Home</button>
+        <button mat-button class="btn btn-success" routerLink="/goals" style="background-color: grey; margin-right: 15px;">Goal List</button>
         <button mat-button class="btn btn-successs" (click)= "newGoal()" style="background-color:rgb(57, 57, 145)">
           Add New Goal
         </button>
